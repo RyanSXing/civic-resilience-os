@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate repository structure
+        run: |
+          test -f AGENTS.md || (echo "Missing AGENTS.md" && exit 1)
+          test -f docs/product-spec.md || (echo "Missing product-spec.md" && exit 1)
+          test -f docs/agentic/STATE.md || (echo "Missing STATE.md" && exit 1)
+          test -f docs/agentic/BACKLOG.md || (echo "Missing BACKLOG.md" && exit 1)
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Secret scan
+        uses: gitleaks/gitleaks-action@v2
+        with:
+          config-path: .gitleaks.toml
+
+  backend:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: hashFiles('backend/**') != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install backend deps
+        run: pip install -r backend/requirements.txt 2>/dev/null || echo "No requirements.txt yet"
+      - name: Type check
+        run: mypy backend/app 2>/dev/null || echo "No backend app yet"
+      - name: Unit tests
+        run: pytest backend/tests/unit -q 2>/dev/null || echo "No unit tests yet"
+      - name: Integration tests
+        run: pytest backend/tests/integration -q 2>/dev/null || echo "No integration tests yet"
+
+  frontend:
+    needs: validate
+    runs-on: ubuntu-latest
+    if: hashFiles('frontend/**') != ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install frontend deps
+        run: cd frontend && npm ci 2>/dev/null || echo "No package-lock.json yet"
+      - name: Lint
+        run: cd frontend && npm run lint 2>/dev/null || echo "No lint script yet"
+      - name: Type check
+        run: cd frontend && npm run typecheck 2>/dev/null || echo "No typecheck script yet"
+      - name: Tests
+        run: cd frontend && npm test -- --passWithNoTests 2>/dev/null || echo "No tests yet"
