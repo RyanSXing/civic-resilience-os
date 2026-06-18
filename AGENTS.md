@@ -17,19 +17,19 @@ Do not use for: refactoring, writing scripts from scratch, debugging business lo
 
 ## Model Assignment
 
-| Role | Model | Purpose |
-|------|-------|---------|
-| Orchestrator | **GPT 5.5 High** | Task dispatch, gate enforcement, state management |
-| Planner | **Kimi 2.7 Pro** | Architecture analysis, implementation planning |
-| Implementer | **Kimi 2.7 Pro** | Technical coding, backend, algorithms, TDD |
-| Frontend | **MiniMax 2.7** | UI/UX, React components, maps, styling |
-| Spec Reviewer | **Kimi 2.7 Pro** | Specification compliance review |
-| Quality Reviewer | **Kimi 2.7 Pro** | Code quality, correctness, maintainability |
-| Security Reviewer | **Kimi 2.7 Pro** | Threat analysis, auth, injection, audit |
-| Debugger | **DeepSeek V4 Pro Max** | Systematic debugging, root cause analysis |
-| Docs Reviewer | **DeepSeek V4 Pro Max** | Documentation accuracy, completeness |
-| Release Manager | **DeepSeek V4 Pro Max** | Final verification, merge, state update |
-| Grunt | **DeepSeek V4 Pro Max** | Formatting, fixtures, CI, dependencies |
+| Role | Model | Provider | Purpose |
+|------|-------|----------|---------|
+| Orchestrator | **GPT 5.5 High** | OpenAI | Task dispatch, gate enforcement, state management |
+| Planner | **Kimi 2.7 Code** | OpenCode Go | Architecture analysis, implementation planning |
+| Implementer | **Kimi 2.7 Code** | OpenCode Go | Technical coding, backend, algorithms, TDD |
+| Frontend | **MiniMax 2.7** | OpenCode Go | UI/UX, React components, maps, styling |
+| Spec Reviewer | **Kimi 2.7 Code** | OpenCode Go | Specification compliance review |
+| Quality Reviewer | **Kimi 2.7 Code** | OpenCode Go | Code quality, correctness, maintainability |
+| Security Reviewer | **Kimi 2.7 Code** | OpenCode Go | Threat analysis, auth, injection, audit |
+| Debugger | **DeepSeek V4 Pro Max** | OpenCode Go | Systematic debugging, root cause analysis |
+| Docs Reviewer | **DeepSeek V4 Pro Max** | OpenCode Go | Documentation accuracy, completeness |
+| Release Manager | **DeepSeek V4 Pro Max** | OpenCode Go | Final verification, merge, state update |
+| Grunt | **DeepSeek V4 Pro Max** | OpenCode Go | Formatting, fixtures, CI, dependencies |
 
 ---
 

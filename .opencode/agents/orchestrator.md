@@ -1,6 +1,7 @@
 ---
 description: Coordinates continuous queue-driven development
 mode: primary
+provider: openai
 model: gpt-5.5-high
 temperature: 0.1
 ---

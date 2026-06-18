@@ -1,6 +1,7 @@
 ---
 description: Reviews documentation accuracy and completeness
 mode: subagent
+provider: opencode-go
 model: deepseek-v4-pro-max
 temperature: 0
 ---

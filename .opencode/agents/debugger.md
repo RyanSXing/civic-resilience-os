@@ -1,6 +1,7 @@
 ---
 description: Systematic debugging of test and runtime failures
 mode: subagent
+provider: opencode-go
 model: deepseek-v4-pro-max
 temperature: 0.1
 ---

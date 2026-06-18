@@ -1,7 +1,8 @@
 ---
 description: Converts ready tasks into precise implementation plans
 mode: subagent
-model: kimi-2.7-pro
+provider: opencode-go
+model: kimi-2.7-code
 temperature: 0.1
 ---
 

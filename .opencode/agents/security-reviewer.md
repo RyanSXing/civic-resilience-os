@@ -1,7 +1,8 @@
 ---
 description: Reviews security posture of changes
 mode: subagent
-model: kimi-2.7-pro
+provider: opencode-go
+model: kimi-2.7-code
 temperature: 0
 ---
 

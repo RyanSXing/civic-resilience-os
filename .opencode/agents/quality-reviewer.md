@@ -1,7 +1,8 @@
 ---
 description: Reviews correctness and maintainability
 mode: subagent
-model: kimi-2.7-pro
+provider: opencode-go
+model: kimi-2.7-code
 temperature: 0
 ---
 

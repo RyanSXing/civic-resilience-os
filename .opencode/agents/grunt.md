@@ -1,6 +1,7 @@
 ---
 description: Handles routine, repetitive, and maintenance tasks
 mode: subagent
+provider: opencode-go
 model: deepseek-v4-pro-max
 temperature: 0.1
 ---

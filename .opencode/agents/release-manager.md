@@ -1,6 +1,7 @@
 ---
 description: Performs final verification and integrates verified work
 mode: subagent
+provider: opencode-go
 model: deepseek-v4-pro-max
 temperature: 0.1
 ---

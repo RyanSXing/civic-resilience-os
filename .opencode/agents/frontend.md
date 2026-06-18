@@ -1,6 +1,7 @@
 ---
 description: Implements frontend UI/UX tasks with design intelligence
 mode: subagent
+provider: opencode-go
 model: minimax-2.7
 temperature: 0.2
 ---
