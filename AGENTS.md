@@ -78,6 +78,26 @@ For any UI/UX work:
 - Keep task scope bounded.
 - Preserve auditability, provenance, human approval, and synthetic-data markings.
 
+## Autonomous Operation Rules
+
+- Run the orchestration loop continuously without asking for permission.
+- When `main` is broken, stop feature work and create a P0 repair task immediately.
+- When a task fails verification, dispatch the debugger and route back to the implementer.
+- When CI fails on a branch, fix it before requesting review.
+- When an external dependency is missing, mock or fixture the boundary and record a blocker.
+- When context is exhausted, commit, update HANDOFF.md, and stop cleanly.
+- When a blocker requires human approval, record it and stop; otherwise keep looping.
+- Update STATE.md, BACKLOG.md, HANDOFF.md, and METRICS.md after every integration.
+- Never proceed to the next task while the current task has unresolved BLOCKER or MAJOR findings.
+
+## Recovery Procedures
+
+- Broken main: create `RESTORE MAIN TO GREEN` task, find smallest root-cause fix, rerun all gates.
+- Flaky test: quarantine with expiry, create repair task, do not rerun until green.
+- External service down: use fixture/mock, record degraded verification, schedule integration check.
+- Agent crash: inspect worktree, read HANDOFF.md, compare branch to task, resume or reset with evidence.
+- Repeated failure (>3 attempts): invoke debugger, reduce to minimal reproduction, escalate if root cause unknown.
+
 ## Completion
 
 A task is not complete until:
@@ -86,5 +106,6 @@ A task is not complete until:
 - spec review passes;
 - quality review passes;
 - docs are updated;
-- completion evidence is recorded;
-- branch is integrated by release manager.
+- completion evidence is recorded in `docs/agentic/runs/<task-id>.md`;
+- branch is integrated by release manager;
+- project memory files are updated.
